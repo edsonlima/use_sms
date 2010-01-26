@@ -9,8 +9,6 @@
   </form>
 </fieldset>
 <hr>
-Token: <%= session[:token] %>
-<hr>
 <table border="1" title="mensagens enviadas">
   <tr><th>Telefone</th><th>Mensagem</th></tr>
   <%= session[:mensages].inspect %>
@@ -22,3 +20,5 @@ Token: <%= session[:token] %>
     </tr>
   <% end %>
 </table>
+<hr>
+<small>Token: <%= session[:token] %></small>
