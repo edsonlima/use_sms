@@ -1,0 +1,24 @@
+<fieldset>
+  <legend>Enviar SMS</legend>
+  <form action="/envia_sms" method="post">
+    <label for="telefone">Telefone:</label>
+    <input type="text" name="telefone" />
+    <label for="mensagem">Mensagem:</label>
+    <input type="text" name="mensagem" />
+    <input type="submit" name="submit" value="enviar"/>
+  </form>
+</fieldset>
+<hr>
+Token: <%= session[:token] %>
+<hr>
+<table border="1" title="mensagens enviadas">
+  <tr><th>Telefone</th><th>Mensagem</th></tr>
+  <%= session[:mensages].inspect %>
+  <% (session[:mensages] || {}).each do |id, mensagem| %>
+    <tr>
+      <td><%= mensagem[:telefone] %></td>
+      <td><%= mensagem[:mensagem] %></td>
+      <td><a href="/status/<%= id %>" target="_blank">Status</td>
+    </tr>
+  <% end %>
+</table>
