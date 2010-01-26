@@ -3,7 +3,7 @@ require 'sinatra'
 require 'rest_client'
 require 'uri'
 
-URL = "http://www.usesms.com/api" 
+URL = "http://localhost:3000/api" 
 
 enable :sessions
 
