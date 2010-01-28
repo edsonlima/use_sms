@@ -12,7 +12,8 @@ helpers do
     if parametros.first != "autenticar"
       parametros = [parametros[0], session[:token]] + parametros[1..-1]
     end
-    url = ([URL] + (parametros.collect{|p| URI.encode(p)})).join("/")
+    encode_regex = Regexp.union(URI::REGEXP::UNSAFE, /\//)
+    url = ([URL] + (parametros.collect{|p| URI.encode(p, encode_regex)})).join("/")
     puts "acessando: #{url}"
     data = RestClient.get url
     if data =~ /^ERRO: 003/
